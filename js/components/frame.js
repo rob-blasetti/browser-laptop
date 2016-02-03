@@ -53,13 +53,13 @@ class Frame extends ImmutableComponent {
   }
 
   componentDidMount () {
-    this.updateWebview()
     // forward postMessage events from webview to webContents
     window.addEventListener('message', function (event) {
-      if (this.webview.getAttribute('src').match(event.origin)) {
+      if (this.webview && this.webview.getAttribute('src').match(event.origin)) {
         remote.getCurrentWebContents().send.apply(null, event.data)
       }
     }.bind(this))
+    this.updateWebview()
   }
 
   componentDidUpdate (prevProps, prevState) {
