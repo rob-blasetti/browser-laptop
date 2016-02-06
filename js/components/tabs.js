@@ -57,6 +57,7 @@ class Tabs extends ImmutableComponent {
                   frames={this.props.frames}
                   key={'tab-' + frameProps.get('key')}
                   paintTabs={this.props.paintTabs}
+                  previewTabs={this.props.previewTabs}
                   isActive={this.props.activeFrame === frameProps}
                   isPrivate={frameProps.get('isPrivate')}
                   partOfFullPageSet={this.props.partOfFullPageSet}/>)
@@ -67,7 +68,7 @@ class Tabs extends ImmutableComponent {
           onClick={WindowActions.newFrame} /> : null }
         </span>
         {(() => {
-          if (this.props.currentFrames.size >= this.props.tabsPerTabPageo && this.totalPages > this.props.tabPageIndex + 1) {
+          if (this.props.currentFrames.size >= this.props.tabsPerTabPage && this.totalPages > this.props.tabPageIndex + 1) {
             return <span
               className='nextTab fa fa-angle-double-right'
               onClick={this.onNextPage.bind(this)} />
